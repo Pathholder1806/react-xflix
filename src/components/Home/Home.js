@@ -10,7 +10,11 @@ const Home = (props) => {
 
     return (
         <Fragment>
-            <Header searchHandler={searchHandler} />
+            <Header
+                showSearch={true}
+                showButton={true}
+                searchHandler={searchHandler}
+            />
             <TagBar tags={genreTags} tagChangeHandler={genreTagChangeHandler} />
             <Cards videos={filteredVideos} />
         </Fragment>

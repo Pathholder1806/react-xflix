@@ -1,10 +1,8 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Cards from "../Cards/Cards";
-
-import Logo from "./img/Logo.png";
+import Header from "../Header/Header";
 
 import "./Video.css";
 
@@ -39,11 +37,7 @@ const Video = () => {
     return (
         <Fragment>
             <div className='video-page'>
-                <header className='video-page__header'>
-                    <Link to='/'>
-                        <img src={Logo} alt='XFlix logo' />
-                    </Link>
-                </header>
+                <Header showSearch={false} showButton={true} />
                 <div className='container'>
                     <iframe src={`https://${currVideo.videoLink}`}></iframe>
                     <div className='video-description'>

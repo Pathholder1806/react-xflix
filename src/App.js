@@ -10,6 +10,7 @@ import {
 
 import Home from "./components/Home/Home";
 import Video from "./components/Video/Video";
+import Favourites from "./components/Favourites/Favourites";
 
 function App() {
     const [videos, setVideos] = useState([]);
@@ -116,6 +117,7 @@ function App() {
                     }
                 />
                 <Route path='/video/:id/' element={<Video />} />
+                <Route exact path='/favourites' element={<Favourites />} />
             </Routes>
         </Router>
     );

@@ -31,25 +31,9 @@
     width: 40%;
 }
 
-.search-form__button {
-    border: 1px solid #444d56;
-    background-color: #313131;
-    color: #444d56;
-
-    padding: 0 2.4rem;
-
-    font-size: 1.2rem;
-
-    cursor: pointer;
-}
-
-.search-form__button ion-icon {
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-.upload-button {
+.favourites-button {
     background-color: #4ca3fc;
+    text-decoration: none;
     padding: 1.2rem 2.4rem;
     outline: none;
     border: none;
@@ -60,11 +44,12 @@
     gap: 1.2rem;
 }
 
-.upload-button__logo {
-    height: 2rem;
+.favourites-button ion-icon {
+    color: #fff;
+    font-size: 2rem;
 }
 
-.upload-button__text {
+.favourites-button__text {
     font-size: 1.5rem;
     letter-spacing: 0.2rem;
     color: #fff;
