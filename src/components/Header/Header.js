@@ -1,25 +1,34 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "./img/Logo.png";
 import uploadLogo from "./img/upload_24px_outlined.png";
 
 import "./Header.css";
 
 const Header = (props) => {
+    const [search, setSearch] = useState("");
+
+    useEffect(() => {
+        props.searchHandler(search);
+    }, [search]);
+
     return (
         <Fragment>
             <header className='header'>
-                <a href='#'>
+                <Link to='/'>
                     <img className='header__logo' src={logo} alt='XFlix logo' />
-                </a>
+                </Link>
                 <form className='search-form'>
                     <input
                         className='search-form__field'
                         id='search-form-field'
                         placeholder='Search'
+                        value={search}
+                        onChange={(e) => {
+                            setSearch(e.target.value);
+                        }}
+                        autoComplete='off'
                     ></input>
-                    <button className='search-form__button' type='submit'>
-                        <ion-icon name='search-outline'></ion-icon>
-                    </button>
                 </form>
                 <a className='upload-button'>
                     <img

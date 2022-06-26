@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import "./Card.css";
 
 const Card = (props) => {
     return (
         <Fragment>
-            <div className='card'>
+            <Link to={`/video/${props.data._id}`} className='card'>
                 <img
                     className='card__img'
                     src={props.data.previewImage}
@@ -12,7 +13,7 @@ const Card = (props) => {
                 />
                 <span className='card__title'>{props.data.title}</span>
                 <span className='card__date'>{props.data.releaseDate}</span>
-            </div>
+            </Link>
         </Fragment>
     );
 };
