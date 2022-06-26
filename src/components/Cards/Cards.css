@@ -1,0 +1,14 @@
+.cards-section {
+    background-color: #181818;
+    padding: 1.6rem 0;
+}
+
+.cards {
+    margin: 0 auto;
+    max-width: 140rem;
+    padding: 0 1.6rem;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.6rem;
+}
