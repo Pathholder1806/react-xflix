@@ -73,3 +73,11 @@ hr {
     padding: 0.6rem 1.2rem;
     cursor: pointer;
 }
+
+.like-dislike-button:disabled {
+    background-color: #bbb;
+    color: #ccc;
+    outline: none;
+    border: none;
+    cursor: not-allowed;
+}

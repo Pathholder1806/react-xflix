@@ -16,6 +16,7 @@ function App() {
     const [videos, setVideos] = useState([]);
     const [searchedVideos, setSearchedVideos] = useState([]);
     const [filteredVideos, setFilteredVideos] = useState([]);
+    const [favourites, setFavourites] = useState([]);
     const [genreTags, setGenreTags] = useState([
         {
             title: "All Genre",
@@ -49,6 +50,11 @@ function App() {
             setFilteredVideos(res.data.videos);
         };
         getData();
+
+        if (localStorage.getItem("favourites")) {
+            const favStorage = JSON.parse(localStorage.getItem("favourites"));
+            setFavourites(favStorage);
+        }
     }, []);
 
     useEffect(() => {
@@ -101,6 +107,22 @@ function App() {
         setSearchedVideos(newArr);
     };
 
+    const addToFavouritesHandler = (item) => {
+        let newArr = [...favourites];
+        newArr.push(item);
+
+        setFavourites(newArr);
+        localStorage.setItem("favourites", JSON.stringify(newArr));
+    };
+
+    const removeFromFavouritesHandler = (id) => {
+        let newArr = favourites.filter((item) => {
+            return item._id !== id;
+        });
+        setFavourites(newArr);
+        localStorage.setItem("favourites", JSON.stringify(newArr));
+    };
+
     return (
         <Router>
             <Routes>
@@ -116,8 +138,26 @@ function App() {
                         />
                     }
                 />
-                <Route path='/video/:id/' element={<Video />} />
-                <Route exact path='/favourites' element={<Favourites />} />
+                <Route
+                    path='/video/:id/'
+                    element={
+                        <Video
+                            addToFavouritesHandler={addToFavouritesHandler}
+                        />
+                    }
+                />
+                <Route
+                    exact
+                    path='/favourites'
+                    element={
+                        <Favourites
+                            videos={favourites}
+                            removeFromFavouritesHandler={
+                                removeFromFavouritesHandler
+                            }
+                        />
+                    }
+                />
             </Routes>
         </Router>
     );

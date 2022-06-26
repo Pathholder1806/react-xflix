@@ -1,6 +1,5 @@
 .favourites {
     background-color: #181818;
-    min-height: 92.8vh;
 }
 
 .container {
@@ -19,6 +18,11 @@ hr {
 
 .favourite-items {
     padding: 1.2rem 0;
+}
+
+.favourite-items h2 {
+    color: #fff;
+    font-weight: 3rem;
 }
 
 .favourite-item {

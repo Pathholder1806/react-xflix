@@ -6,11 +6,12 @@ import Header from "../Header/Header";
 
 import "./Video.css";
 
-const Video = () => {
+const Video = (props) => {
     const { id } = useParams();
 
     const [videos, setVideos] = useState([]);
     const [currVideo, setCurrVideo] = useState({});
+    const [inFav, setInFav] = useState(false);
 
     useEffect(() => {
         const getVideoData = async () => {
@@ -32,6 +33,18 @@ const Video = () => {
             setVideos(videoArr);
         };
         getVideoData();
+
+        setInFav(false);
+
+        if (localStorage.getItem("favourites")) {
+            const favourites = JSON.parse(localStorage.getItem("favourites"));
+
+            favourites.forEach((ele) => {
+                if (ele._id === id) {
+                    setInFav(true);
+                }
+            });
+        }
     }, [id]);
 
     return (
@@ -48,11 +61,16 @@ const Video = () => {
                                 <span>{currVideo.releaseDate}</span>
                             </div>
                             <div className='video-details__right'>
-                                <button className='like-dislike-button'>
-                                    <ion-icon name='thumbs-up-outline'></ion-icon>
-                                </button>
-                                <button className='like-dislike-button'>
-                                    <ion-icon name='thumbs-down-outline'></ion-icon>
+                                <button
+                                    className='like-dislike-button'
+                                    onClick={() => {
+                                        props.addToFavouritesHandler(currVideo);
+                                        setInFav(true);
+                                    }}
+                                    disabled={inFav ? "true" : ""}
+                                >
+                                    <ion-icon name='star-outline'></ion-icon>
+                                    <span>Add to Favourite</span>
                                 </button>
                             </div>
                         </div>
